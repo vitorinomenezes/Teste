@@ -42,7 +42,7 @@ namespace Aplicacao.Services
         public List<Clients> ListBanksClients(List<Bank> _listBanks)
         {
             Console.WriteLine("  ");
-            Console.WriteLine("  Load the Clients x Bank. " + this.TextMenssage);
+            Console.WriteLine("  Load the Bank x Clients. " + this.TextMenssage);
             WriteLine();
             var clientsXBanks = (from clients in ListRegisters
                                join banks in _listBanks
