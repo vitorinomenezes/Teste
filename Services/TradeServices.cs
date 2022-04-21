@@ -30,7 +30,7 @@ namespace Aplicacao.Services
         public List<Trade> List()
         {
             Console.WriteLine("  ");
-            Console.WriteLine("  Load the clients of bank. " + this.TextMenssage);
+            Console.WriteLine("  Load the trade. " + this.TextMenssage);
             WriteLine();
 
             foreach (Trade item in ListRegisters.OrderBy(x => x.Id))

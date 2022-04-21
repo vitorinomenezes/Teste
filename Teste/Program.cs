@@ -38,11 +38,14 @@ namespace Teste
 
             //Clients
             _serviceClients.Load();
+            _serviceClients.Add(new Clients() {Id=2,NameClient="DONALD",BankId=1 });
             _serviceClients.ListBanksClients(_serviceBank.ListRegisters);
 
             //Trade
             _serviceTrade.Load();
+            _serviceTrade.List();
             _serviceTrade.ListTradeClients(_serviceClients.ListRegisters, _serviceBank.ListRegisters);
+          
 
             //Amounts
             _serviceAmounts.Load();
