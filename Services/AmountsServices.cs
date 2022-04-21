@@ -44,7 +44,8 @@ namespace Aplicacao.Services
             return ListRegisters;
         }
 
-        public void ListAmountsCategories(List<Categories> _list)
+        public void ListAmountsCategories(List<Categories> _list, List<Clients> _listClients
+                                            , List<Trade> _listTrade, List<Bank> _listBanks)
         {
             Console.WriteLine("  ");
             Console.WriteLine("  Load the amounts of trade. " + this.TextMenssage);
@@ -53,19 +54,29 @@ namespace Aplicacao.Services
             var _lists = (from amounts in ListRegisters
                           join categories in _list
                           on amounts.CategoriaId equals categories.Id
+                          join trads in _listTrade
+                          on amounts.TradeId equals trads.Id
+                          join clients in _listClients
+                          on trads.ClientId equals clients.Id
+                          join banks in _listBanks
+                          on clients.BankId equals banks.Id
                           select new
                           {
                               Id = amounts.Id,
                               Value = amounts.Value,
                               ClientSector = amounts.ClientSector,
                               NextPaymentDate = amounts.NextPaymentDate,
-                              NameCategoria = categories.NameCategories
+                              NameCategoria = categories.NameCategories,
+                              NameClient = clients.NameClient,
+                              NameBank = banks.NameBank,
+                              NameTrade = trads.NameTrade
                           }).ToList();
 
             foreach (var item in _lists.OrderBy(x => x.Id))
             {
-                Console.WriteLine("  " + String.Format(" {0} {1} {2} {3} {4}", item.Id, item.Value, item.ClientSector
-                    , item.NextPaymentDate, item.NameCategoria));
+                Console.WriteLine("  " + String.Format(" {0}-{1}-{2}-{3}-{4}-{5}-{6}-{7}", item.Id, item.Value  
+                    , item.ClientSector
+                    , item.NextPaymentDate, item.NameCategoria, item.NameClient,item.NameTrade, item.NameBank));
             }
             WriteLine();
         }
@@ -73,11 +84,11 @@ namespace Aplicacao.Services
         public void Load()
         {
             ListRegisters = new List<Amounts>();
-            this.Add(new Amounts() { Id = 1, Value = 2000000, ClientSector = "Private", NextPaymentDate = new DateTime(2025, 12, 29), IsPoliticallyExposed=false });
-            this.Add(new Amounts() { Id = 2, Value = 400000, ClientSector = "Public", NextPaymentDate = new DateTime(2020, 07, 01), IsPoliticallyExposed = false });
-            this.Add(new Amounts() { Id = 3, Value = 500000, ClientSector = "Public", NextPaymentDate = new DateTime(2024, 02, 01), IsPoliticallyExposed = false });
-            this.Add(new Amounts() { Id = 4, Value = 3000000, ClientSector = "Public", NextPaymentDate = new DateTime(2023, 10, 26), IsPoliticallyExposed = false });
-            this.Add(new Amounts() { Id = 5, Value = 1000000, ClientSector = "Public", NextPaymentDate = new DateTime(2023, 10, 26), IsPoliticallyExposed = true });
+            this.Add(new Amounts() { Id = 1, Value = 2000000, ClientSector = "Private", NextPaymentDate = new DateTime(2025, 12, 29), IsPoliticallyExposed=false, TradeId=1 });
+            this.Add(new Amounts() { Id = 2, Value = 400000, ClientSector = "Public", NextPaymentDate = new DateTime(2020, 07, 01), IsPoliticallyExposed = false, TradeId = 1 });
+            this.Add(new Amounts() { Id = 3, Value = 500000, ClientSector = "Public", NextPaymentDate = new DateTime(2024, 02, 01), IsPoliticallyExposed = false, TradeId = 1 });
+            this.Add(new Amounts() { Id = 4, Value = 3000000, ClientSector = "Public", NextPaymentDate = new DateTime(2023, 10, 26), IsPoliticallyExposed = false, TradeId = 1 });
+            this.Add(new Amounts() { Id = 5, Value = 1000000, ClientSector = "Public", NextPaymentDate = new DateTime(2023, 10, 26), IsPoliticallyExposed = true, TradeId = 1 });
             this.TextMenssage = string.Empty;
         }
 

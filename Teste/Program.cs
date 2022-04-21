@@ -39,17 +39,23 @@ namespace Teste
             //Clients
             _serviceClients.Load();
             _serviceClients.Add(new Clients() {Id=2,NameClient="DONALD",BankId=1 });
+            _serviceClients.List();
             _serviceClients.ListBanksClients(_serviceBank.ListRegisters);
 
             //Trade
             _serviceTrade.Load();
+            _serviceTrade.Add(new Trade() { Id = 2, NameTrade = "PLAN FINANCE",ClientId=2 });
             _serviceTrade.List();
+           
             _serviceTrade.ListTradeClients(_serviceClients.ListRegisters, _serviceBank.ListRegisters);
-          
+            
 
             //Amounts
             _serviceAmounts.Load();
-            _serviceAmounts.ListAmountsCategories(_serviceCategories.ListRegisters);
+            _serviceAmounts.Add(new Amounts() { Id = 6, Value = 2000000, ClientSector = "Public", NextPaymentDate = new DateTime(2025, 09, 29), IsPoliticallyExposed = false, TradeId = 2 });
+            _serviceAmounts.ListAmountsCategories(_serviceCategories.ListRegisters
+                , _serviceClients.ListRegisters, _serviceTrade.ListRegisters
+                , _serviceBank.ListRegisters);
 
             Console.WriteLine(" ");
             Console.WriteLine(" Question 2  ");

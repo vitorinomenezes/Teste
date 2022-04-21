@@ -44,7 +44,7 @@ namespace Aplicacao.Services
         public List<Clients> ListBanksClients(List<Bank> _listBanks)
         {
             Console.WriteLine("  ");
-            Console.WriteLine("  Load the clients of bank. " + this.TextMenssage);
+            Console.WriteLine("  Load the clients x bank. " + this.TextMenssage);
             WriteLine();
             var clientsXBanks = (from clients in ListRegisters
                                join banks in _listBanks

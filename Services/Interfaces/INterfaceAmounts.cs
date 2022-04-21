@@ -5,6 +5,6 @@ namespace Aplicacao.Services.Interfaces
 {
     public interface INterfaceAmounts : INterfaceGenericApp<Amounts>
     {
-        void ListAmountsCategories(List<Categories> _list);
+        void ListAmountsCategories(List<Categories> _list, List<Clients> _listClients, List<Trade> _listTrade, List<Bank> _listBanks);
     }
 }
