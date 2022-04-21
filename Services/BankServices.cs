@@ -12,13 +12,11 @@ namespace Aplicacao.Services
 
         public void Add(Bank _object)
         {
-            this.TextMenssage = "after add bank.";
             ListRegisters.Add(_object);
         }
 
         public void Delete(Bank id)
         {
-            this.TextMenssage = "after delete bank.";
             ListRegisters.Remove(id);
         }
 
@@ -29,7 +27,7 @@ namespace Aplicacao.Services
 
         public List<Bank> List()
         {
-            Console.WriteLine("  Load my banks. " + this.TextMenssage);
+            Console.WriteLine("  Load the Banks. ");
             WriteLine();
             foreach (Bank item in ListRegisters.OrderBy(x => x.Id))
             {
@@ -48,7 +46,6 @@ namespace Aplicacao.Services
 
         public void Update(Bank _object)
         {
-            this.TextMenssage = "after Edit bank.";
             ListRegisters.Find(x => x.Id == _object.Id).NameBank = _object.NameBank;
         }
     }

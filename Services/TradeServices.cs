@@ -12,14 +12,12 @@ namespace Aplicacao.Services
 
         public void Add(Trade _object)
         {
-            this.TextMenssage = "after add Trade.";
             ListRegisters.Add(_object);
         }
 
         public void Delete(Trade id)
         {
-            this.TextMenssage = "after delete trade.";
-            ListRegisters.Remove(id);
+             ListRegisters.Remove(id);
         }
 
         public Trade GetById(int id)
@@ -30,7 +28,7 @@ namespace Aplicacao.Services
         public List<Trade> List()
         {
             Console.WriteLine("  ");
-            Console.WriteLine("  Load the trade. " + this.TextMenssage);
+            Console.WriteLine("  Load the Trade. ");
             WriteLine();
 
             foreach (Trade item in ListRegisters.OrderBy(x => x.Id))
@@ -44,7 +42,7 @@ namespace Aplicacao.Services
         public void ListTradeClients(List<Clients> _listClients, List<Bank> _listBanks)
         {
             Console.WriteLine("  ");
-            Console.WriteLine("  Load the trade x banks x clients . " + this.TextMenssage);
+            Console.WriteLine("  Load the Trade x Banks x Clients . " + this.TextMenssage);
             WriteLine();
             var clientsXBanks = (from clients in _listClients
                                  join banks in _listBanks
@@ -74,8 +72,7 @@ namespace Aplicacao.Services
 
         public void Update(Trade _object)
         {
-            this.TextMenssage = "after Edit client.";
-            ListRegisters.Find(x => x.Id == _object.Id).NameTrade = _object.NameTrade;
+           ListRegisters.Find(x => x.Id == _object.Id).NameTrade = _object.NameTrade;
         }
     }
 }

@@ -12,13 +12,11 @@ namespace Aplicacao.Services
 
         public void Add(Clients _object)
         {
-            this.TextMenssage = "after add client.";
             ListRegisters.Add(_object);
         }
 
         public void Delete(Clients id)
         {
-            this.TextMenssage = "after delete client.";
             ListRegisters.Remove(id);
         }
 
@@ -30,7 +28,7 @@ namespace Aplicacao.Services
         public List<Clients> List()
         {
             Console.WriteLine("  ");
-            Console.WriteLine("  Load the clients of bank. " + this.TextMenssage);
+            Console.WriteLine("  Load the Clients. ");
             WriteLine();
             
             foreach (Clients item in ListRegisters.OrderBy(x => x.Id))
@@ -44,7 +42,7 @@ namespace Aplicacao.Services
         public List<Clients> ListBanksClients(List<Bank> _listBanks)
         {
             Console.WriteLine("  ");
-            Console.WriteLine("  Load the clients x bank. " + this.TextMenssage);
+            Console.WriteLine("  Load the Clients x Bank. " + this.TextMenssage);
             WriteLine();
             var clientsXBanks = (from clients in ListRegisters
                                join banks in _listBanks
@@ -72,7 +70,6 @@ namespace Aplicacao.Services
 
         public void Update(Clients _object)
         {
-            this.TextMenssage = "after Edit client.";
             ListRegisters.Find(x => x.Id == _object.Id).NameClient = _object.NameClient;
         }
     }

@@ -14,13 +14,11 @@ namespace Aplicacao.Services
         public void Add(Amounts _object)
         {
             _object.CategoriaId = (_object.IsPoliticallyExposed)?4: _object.NextPaymentDate.Date < DateTime.Now.Date ?1:_object.Value> 10000 && _object.ClientSector == "Private" ? 2:3;
-           this.TextMenssage = "after add amount.";
             ListRegisters.Add(_object);
         }
 
         public void Delete(Amounts id)
         {
-            this.TextMenssage = "after delete trade.";
             ListRegisters.Remove(id);
         }
 
@@ -32,7 +30,7 @@ namespace Aplicacao.Services
         public List<Amounts> List()
         {
             Console.WriteLine("  ");
-            Console.WriteLine("  Load the amounts of trade. " + this.TextMenssage);
+            Console.WriteLine("  Load the Amounts X Categories X Clients X Trade X Bank. ");
             WriteLine();
 
             foreach (Amounts item in ListRegisters.OrderBy(x => x.Id))
@@ -48,7 +46,8 @@ namespace Aplicacao.Services
                                             , List<Trade> _listTrade, List<Bank> _listBanks)
         {
             Console.WriteLine("  ");
-            Console.WriteLine("  Load the amounts of trade. " + this.TextMenssage);
+            Console.WriteLine("  Load the Amounts X Categories X Clients X Trade X Bank. ");
+
             WriteLine();
 
             var _lists = (from amounts in ListRegisters

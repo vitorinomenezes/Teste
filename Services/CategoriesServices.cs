@@ -12,13 +12,11 @@ namespace Aplicacao.Services
 
         public void Add(Categories _object)
         {
-            this.TextMenssage = "after add categorie.";
             ListRegisters.Add(_object);
         }
 
         public void Delete(Categories id)
         {
-            this.TextMenssage = "after delete categorie.";
             ListRegisters.Remove(id);
         }
 
@@ -29,7 +27,7 @@ namespace Aplicacao.Services
 
         public List<Categories> List()
         {
-            Console.WriteLine("  Load my categories. "+ this.TextMenssage);
+            Console.WriteLine("  Load the Categories. ");
             WriteLine();
             foreach (Categories item in ListRegisters.OrderBy(x => x.Id))
             {
@@ -51,7 +49,6 @@ namespace Aplicacao.Services
 
         public void Update(Categories Objeto)
         {
-            this.TextMenssage = "after Edit categories.";
             ListRegisters.Find(x => x.Id == Objeto.Id).NameCategories= Objeto.NameCategories;
          }
     }
